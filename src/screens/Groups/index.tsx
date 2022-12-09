@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { GroupCard } from '@components/GroupCard'
 import { Header } from '@components/Header'
 import { Highlight } from '@components/Highlight'
@@ -6,9 +7,15 @@ import { Container } from './styles'
 import { FlatList } from 'react-native'
 import { ListEmpty } from '@components/ListEmpty'
 import { Button } from '@components/Button'
+import { Routes } from '@routes/enum.routes'
 
 export const Groups = () => {
-  const [groups, setGroups] = React.useState<string[]>([])
+  const navigation = useNavigation()
+  const [groups] = React.useState<string[]>([])
+
+  function handleAddGroup() {
+    navigation.navigate(Routes.add)
+  }
 
   return (
     <Container>
@@ -24,7 +31,7 @@ export const Groups = () => {
           <ListEmpty message="Que tal cadastrar a primeira turma?" />
         )}
       />
-      <Button title="Criar nova turma" />
+      <Button title="Criar nova turma" onPress={handleAddGroup} />
     </Container>
   )
 }

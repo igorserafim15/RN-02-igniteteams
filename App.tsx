@@ -1,16 +1,14 @@
 /* eslint-disable camelcase */
 import { StatusBar } from 'react-native'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components/native'
 import {
   useFonts,
   Roboto_400Regular,
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto'
 import theme from '@theme/index'
-// import { Groups } from '@screens/Groups'
-// import { AddGroup } from '@screens/AddGroup'
 import { Loading } from '@components/Loading'
-import { Players } from '@screens/Players'
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoader] = useFonts({ Roboto_400Regular, Roboto_700Bold })
@@ -22,7 +20,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoader ? <Players /> : <Loading />}
+      {fontsLoader ? <Routes /> : <Loading />}
     </ThemeProvider>
   )
 }
